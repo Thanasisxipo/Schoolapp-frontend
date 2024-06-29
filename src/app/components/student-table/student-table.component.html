@@ -1,0 +1,36 @@
+@if (!students.length) {
+    <div class="alert alert-danger text-center">No student found!</div>
+    <button mat-flat-button role="button" color="primary" (click)="insertStudent()">Insert new student</button>
+    <button mat-flat-button role="button" color="primary" (click)="goBack()">Back</button>
+  } @else {
+    <table class="table table-bordered">
+      <caption class="caption-top fw-bold bg-primary text-light text-center">
+        Students
+      </caption>
+      @for (student of students; track student) {
+        <tr>
+          <td class="fw-semibold text-end">Id:</td>
+          <td class="ps-2">{{ student.id }}</td>
+          <td class="fw-semibold text-end">Firstname:</td>
+          <td class="ps-2">{{ student.firstname }}</td>
+          <td class="fw-semibold text-end">Lastname:</td>
+          <td class="ps-2">{{ student.lastname }}</td>
+          <td class="fw-semibold text-end">Gender:</td>
+          <td class="ps-2">{{ getGenderViewValue(student.gender) }}</td>
+          <td class="fw-semibold text-end">Email:</td>
+          <td class="ps-2">{{ student.email }}</td>
+          <td>
+            <button mat-flat-button role="button" color="primary" (click)="deleteStudent(student)">Delete</button>
+          </td>
+          <td>
+            <button mat-flat-button role="button" color="primary" (click)="updateStudent(student)">Update</button>
+          </td>
+          <td>
+            <button mat-flat-button role="button" color="primary" (click)="getCourses(student)">Courses</button>
+          </td>
+        </tr>
+      }
+    </table>
+    <button mat-flat-button role="button" color="primary" (click)="insertStudent()">Insert new student</button>
+    <button mat-flat-button role="button" color="primary" (click)="goBack()">Back</button>
+  }

@@ -1,0 +1,17 @@
+<h4>Add Course To Student</h4>
+
+<form 
+    [formGroup]="form"
+    class="d-flex flex-column">
+    <mat-form-field>
+        <mat-label>Course</mat-label>
+        <mat-select
+        formControlName="course">
+          @for (course of courses; track course) {
+            <mat-option [value]="course.id">{{course.courseName}}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+</form>
+<button mat-flat-button role="button" color="primary" class="d-inline" (click)="addCourse()">Add</button>
+<button mat-flat-button role="button" color="primary" class="d-inline m-lg-2" (click)="goBack()">Back</button>

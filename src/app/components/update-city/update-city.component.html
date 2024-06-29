@@ -1,0 +1,21 @@
+@if (!city) {
+    <div class="alert alert-danger text-center">No city found!</div>
+    <button mat-flat-button color="primary" (click)="goBack()">Back</button>
+} @else {
+    <form 
+    [formGroup]="form"
+    class="d-flex flex-column">
+    <mat-form-field>
+        <mat-label>City</mat-label>
+        <input
+          matInput
+          type="text"
+          formControlName="city" placeholder="Enter city name"/>
+        @if (form.get("city").invalid && form.get("city").touched) {
+          <mat-error>City is required</mat-error>
+        }
+      </mat-form-field>
+    </form>
+    <button mat-flat-button role="button" color="primary" class="d-inline" (click)="updateCity()">Update</button>
+    <button mat-flat-button role="button" color="primary" class="d-inline m-lg-2" (click)="goBack()">Back</button>
+}

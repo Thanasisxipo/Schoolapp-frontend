@@ -1,0 +1,94 @@
+@if (!user) {
+    <div class="alert alert-danger text-center">No user found!</div>
+    <button mat-flat-button color="primary" (click)="goBack()">Back</button>
+} @else {
+    <form 
+    [formGroup]="form"
+    class="d-flex flex-column">
+    <mat-form-field>
+        <mat-label>Username</mat-label>
+        <input
+          matInput
+          type="text"
+          formControlName="username" placeholder="Enter user username"/>
+        @if (form.get("username").invalid && form.get("username").touched) {
+          <mat-error>Usernmae is required</mat-error>
+        }
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Password</mat-label>
+        <input
+          matInput
+          type="password"
+          formControlName="password" placeholder="Enter user password"/>
+        @if (form.get("password").invalid && form.get("password").touched) {
+          <mat-error>Password is required</mat-error>
+        }
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Confirm Password</mat-label>
+        <input
+          matInput
+          type="password"
+          formControlName="confirmPassword" />
+        @if (form.get("confirmPassword").hasError("passwordMismatch")) {
+          <mat-error>Passwords do not match</mat-error>
+        } @else {
+          @if (
+            form.get("confirmPassword").invalid &&
+            form.get("confirmPassword").touched
+          ) {
+            <mat-error>Password is missing or invalid</mat-error>
+          }
+        }
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>User Role</mat-label>
+        <mat-select
+        formControlName="role">
+          @for (role of roles; track role) {
+            <mat-option [value]="role.value">{{role.viewValue}}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+      <!-- @if (user.role === "ADMIN") {
+
+      } @else if (user.role === "TEACHER") { -->
+        <!-- <mat-form-field>
+          <mat-label>Teacher</mat-label>
+          <input
+            matInput
+            type="text"
+            formControlName="teacher" placeholder="{{user.teacher.lastname}}"/>
+        </mat-form-field> -->
+        <!-- <mat-form-field>
+          <mat-label>Teacher</mat-label>
+          <mat-select
+          formControlName="teacher">
+            @for (teacher of teachers; track teacher) {
+              <mat-option [value]="user.teacher.id">{{user.teacher.lastname}}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+      } @else if (user.role === "STUDENT") { -->
+        <!-- <mat-form-field>
+          <mat-label>Student</mat-label>
+          <input
+            matInput
+            type="text"
+            formControlName="student" placeholder="{{user.student.lastname}}"/>
+        </mat-form-field> -->
+        <!-- <mat-form-field>
+          <mat-label>Student</mat-label>
+          <mat-select
+          formControlName="student">
+            @for (student of students; track student) {
+              <mat-option [value]="user.student.id">{{user.student.lastname}}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+      } -->
+    </form>
+    <button mat-flat-button role="button" color="primary" class="d-inline" (click)="updateUser()">Update</button>
+    <button mat-flat-button role="button" color="primary" class="d-inline m-lg-2" (click)="goBack()">Back</button>
+}

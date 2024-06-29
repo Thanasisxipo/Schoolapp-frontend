@@ -1,0 +1,21 @@
+@if (!course) {
+    <div class="alert alert-danger text-center">No course found!</div>
+    <button mat-flat-button color="primary" (click)="goBack()">Back</button>
+} @else {
+    <form 
+    [formGroup]="form"
+    class="d-flex flex-column">
+    <mat-form-field>
+        <mat-label>Course</mat-label>
+        <input
+          matInput
+          type="text"
+          formControlName="courseName" placeholder="Enter course name"/>
+        @if (form.get("courseName").invalid && form.get("courseName").touched) {
+          <mat-error>Course is required</mat-error>
+        }
+      </mat-form-field>
+    </form>
+    <button mat-flat-button role="button" color="primary" class="d-inline" (click)="updateCourse()">Update</button>
+    <button mat-flat-button role="button" color="primary" class="d-inline m-lg-2" (click)="goBack()">Back</button>
+}

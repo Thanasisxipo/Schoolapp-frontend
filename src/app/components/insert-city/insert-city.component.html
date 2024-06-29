@@ -1,0 +1,16 @@
+<form 
+    [formGroup]="form"
+    class="d-flex flex-column">
+    <mat-form-field>
+        <mat-label>City</mat-label>
+        <input
+          matInput
+          type="text"
+          formControlName="name" placeholder="Enter city name"/>
+        @if (form.get("name").invalid && form.get("name").touched) {
+          <mat-error>City is required</mat-error>
+        }
+    </mat-form-field>
+</form>
+<button mat-flat-button role="button" color="primary" class="d-inline" (click)="insertCity()">Insert</button>
+<button mat-flat-button role="button" color="primary" class="d-inline m-lg-2" (click)="goBack()">Back</button>

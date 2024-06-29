@@ -1,0 +1,64 @@
+<form 
+    [formGroup]="form"
+    class="d-flex flex-column">
+    <mat-form-field>
+        <mat-label>Firstname</mat-label>
+        <input
+          matInput
+          type="text"
+          formControlName="firstname" placeholder="Enter teacher firstname"/>
+        @if (form.get("firstname").invalid && form.get("firstname").touched) {
+          <mat-error>Firstname is required</mat-error>
+        }
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Lastname</mat-label>
+        <input
+          matInput
+          type="text"
+          formControlName="lastname" placeholder="Enter teacher lastname"/>
+        @if (form.get("lastname").invalid && form.get("lastname").touched) {
+          <mat-error>Lastname is required</mat-error>
+        }
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Ssn</mat-label>
+        <input
+          matInput
+          type="text"
+          formControlName="ssn" placeholder="Enter teacher ssn"/>
+          @if (form.get("ssn").invalid && form.get("ssn").touched) {
+            <mat-error>Ssn is required</mat-error>
+          }
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input
+        matInput
+        type="email"
+        formControlName="email" placeholder="Enter teacher email"/>
+      @if (form.get("email").invalid && form.get("email").touched) {
+        <mat-error>Email is required</mat-error>
+      }
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Speciality</mat-label>
+    <mat-select
+    formControlName="speciality">
+      @for (speciality of specialities; track speciality) {
+        <mat-option [value]="speciality.id">{{speciality.speciality}}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>User</mat-label>
+    <mat-select
+    formControlName="user">
+      @for (user of users; track user) {
+        <mat-option [value]="user.username">{{user.username}}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+</form>
+<button mat-flat-button role="button" color="primary" class="d-inline" (click)="insertTeacher()">Insert</button>
+<button mat-flat-button role="button" color="primary" class="d-inline m-lg-2" (click)="goBack()">Back</button>

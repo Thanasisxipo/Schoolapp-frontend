@@ -1,0 +1,27 @@
+@if (!cities.length) {
+    <div class="alert alert-danger text-center">No city found!</div>
+    <button mat-flat-button role="button" color="primary" (click)="insertCity()">Insert new city</button>
+    <button mat-flat-button role="button" class="m-lg-2" color="primary" (click)="goBack()">Back</button>
+  } @else {
+    <table class="table table-bordered">
+      <caption class="caption-top fw-bold bg-primary text-light text-center">
+        Cities
+      </caption>
+      @for (city of cities; track city) {
+        <tr>
+          <td class="fw-semibold text-end">Id:</td>
+          <td class="ps-2">{{ city.id }}</td>
+          <td class="fw-semibold text-end">City:</td>
+          <td class="ps-2">{{ city.city }}</td>
+          <td>
+            <button mat-flat-button role="button" color="primary" (click)="deleteCity(city)">Delete</button>
+          </td>
+          <td>
+            <button mat-flat-button role="button" color="primary" (click)="updateCity(city)">Update</button>
+          </td>
+        </tr>
+      }
+    </table>
+    <button mat-flat-button role="button" color="primary" (click)="insertCity()">Insert new city</button>
+    <button mat-flat-button role="button" class="m-lg-2" color="primary" (click)="goBack()">Back</button>
+  }

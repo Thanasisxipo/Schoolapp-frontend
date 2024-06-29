@@ -1,0 +1,52 @@
+<form 
+    [formGroup]="form"
+    class="d-flex flex-column">
+    <mat-form-field>
+        <mat-label>Username</mat-label>
+        <input
+          matInput
+          type="text"
+          formControlName="username" placeholder="Enter user username"/>
+        @if (form.get("username").invalid && form.get("username").touched) {
+          <mat-error>Username is required</mat-error>
+        }
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Password</mat-label>
+        <input
+          matInput
+          type="password"
+          formControlName="password" placeholder="Enter User password"/>
+        @if (form.get("password").invalid && form.get("password").touched) {
+          <mat-error>Password is required</mat-error>
+        }
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Confirm Password</mat-label>
+      <input
+        matInput
+        type="password"
+        formControlName="confirmPassword" />
+      @if (form.get("confirmPassword").hasError("passwordMismatch")) {
+        <mat-error>Passwords do not match</mat-error>
+      } @else {
+        @if (
+          form.get("confirmPassword").invalid &&
+          form.get("confirmPassword").touched
+        ) {
+          <mat-error>Password is missing or invalid</mat-error>
+        }
+      }
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>User Role</mat-label>
+      <mat-select
+      formControlName="role">
+        @for (role of roles; track role) {
+          <mat-option [value]="role.value">{{role.viewValue}}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+</form>
+<button mat-flat-button role="button" color="primary" class="d-inline" (click)="insertUser()">Insert</button>
+<button mat-flat-button role="button" color="primary" class="d-inline m-lg-2" (click)="goBack()">Back</button>

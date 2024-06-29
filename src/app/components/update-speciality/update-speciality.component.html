@@ -1,0 +1,21 @@
+@if (!speciality) {
+    <div class="alert alert-danger text-center">No speciality found!</div>
+    <button mat-flat-button color="primary" (click)="goBack()">Back</button>
+} @else {
+    <form 
+    [formGroup]="form"
+    class="d-flex flex-column">
+    <mat-form-field>
+        <mat-label>Speciality</mat-label>
+        <input
+          matInput
+          type="text"
+          formControlName="speciality" placeholder="Enter speciality name"/>
+        @if (form.get("speciality").invalid && form.get("speciality").touched) {
+          <mat-error>Speciality is required</mat-error>
+        }
+      </mat-form-field>
+    </form>
+    <button mat-flat-button role="button" color="primary" class="d-inline" (click)="updateSpeciality()">Update</button>
+    <button mat-flat-button role="button" color="primary" class="d-inline m-lg-2" (click)="goBack()">Back</button>
+}

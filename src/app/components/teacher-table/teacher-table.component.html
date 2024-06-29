@@ -1,0 +1,36 @@
+@if (!teachers.length) {
+    <div class="alert alert-danger text-center">No teacher found!</div>
+    <button mat-flat-button role="button" color="primary" (click)="insertTeacher()">Insert new teacher</button>
+    <button mat-flat-button role="button" color="primary" (click)="goBack()">Back</button>
+  } @else {
+    <table class="table table-bordered">
+      <caption class="caption-top fw-bold bg-primary text-light text-center">
+        Teachers
+      </caption>
+      @for (teacher of teachers; track teacher) {
+        <tr>
+          <td class="fw-semibold text-end">Id:</td>
+          <td class="ps-2">{{ teacher.id }}</td>
+          <td class="fw-semibold text-end">Firstname:</td>
+          <td class="ps-2">{{ teacher.firstname }}</td>
+          <td class="fw-semibold text-end">Lastname:</td>
+          <td class="ps-2">{{ teacher.lastname }}</td>
+          <td class="fw-semibold text-end">SSN:</td>
+          <td class="ps-2">{{ teacher.ssn }}</td>
+          <td class="fw-semibold text-end">Email:</td>
+          <td class="ps-2">{{ teacher.email }}</td>
+          <td>
+            <button mat-flat-button role="button" color="primary" (click)="deleteTeacher(teacher)">Delete</button>
+          </td>
+          <td>
+            <button mat-flat-button role="button" color="primary" (click)="updateTeacher(teacher)">Update</button>
+          </td>
+          <td>
+            <button mat-flat-button role="button" color="primary" (click)="getCourses(teacher)">Courses</button>
+          </td>
+        </tr>
+      }
+    </table>
+    <button mat-flat-button role="button" color="primary" (click)="insertTeacher()">Insert new teacher</button>
+    <button mat-flat-button role="button" color="primary" (click)="goBack()">Back</button>
+  }

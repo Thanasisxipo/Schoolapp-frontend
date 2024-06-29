@@ -1,0 +1,29 @@
+@if (!users.length) {
+    <div class="alert alert-danger text-center">No user found!</div>
+    <button mat-flat-button role="button" color="primary" (click)="insertUser()">Insert new user</button>
+    <button mat-flat-button role="button" color="primary" (click)="goBack()">Back</button>
+  } @else {
+    <table class="table table-bordered">
+      <caption class="caption-top fw-bold bg-primary text-light text-center">
+        Users
+      </caption>
+      @for (user of users; track user) {
+        <tr>
+          <td class="fw-semibold text-end">Id:</td>
+          <td class="ps-2">{{ user.id }}</td>
+          <td class="fw-semibold text-end">Username:</td>
+          <td class="ps-2">{{ user.username }}</td>
+          <td class="fw-semibold text-end">Role:</td>
+          <td class="ps-2">{{ user.role }}</td>
+          <td>
+            <button mat-flat-button role="button" color="primary" (click)="deleteUser(user)">Delete</button>
+          </td>
+          <td>
+            <button mat-flat-button role="button" color="primary" (click)="updateUser(user)">Update</button>
+          </td>
+        </tr>
+      }
+    </table>
+    <button mat-flat-button role="button" color="primary" (click)="insertUser()">Insert new user</button>
+    <button mat-flat-button role="button" color="primary" (click)="goBack()">Back</button>
+  }

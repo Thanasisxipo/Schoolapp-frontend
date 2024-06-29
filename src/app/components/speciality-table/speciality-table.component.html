@@ -1,0 +1,27 @@
+@if (!specialities.length) {
+    <div class="alert alert-danger text-center">No speciality found!</div>
+    <button mat-flat-button role="button" color="primary" (click)="insertSpeciality()">Insert new speciality</button>
+    <button mat-flat-button role="button" color="primary" (click)="goBack()">Back</button>
+  } @else {
+    <table class="table table-bordered">
+      <caption class="caption-top fw-bold bg-primary text-light text-center">
+        Specialities
+      </caption>
+      @for (speciality of specialities; track speciality) {
+        <tr>
+          <td class="fw-semibold text-end">Id:</td>
+          <td class="ps-2">{{ speciality.id }}</td>
+          <td class="fw-semibold text-end">Speciality:</td>
+          <td class="ps-2">{{ speciality.speciality }}</td>
+          <td>
+            <button mat-flat-button role="button" color="primary" (click)="deleteSpeciality(speciality)">Delete</button>
+          </td>
+          <td>
+            <button mat-flat-button role="button" color="primary" (click)="updateSpeciality(speciality)">Update</button>
+          </td>
+        </tr>
+      }
+    </table>
+    <button mat-flat-button role="button" color="primary" (click)="insertSpeciality()">Insert new speciality</button>
+    <button mat-flat-button role="button" color="primary" (click)="goBack()">Back</button>
+  }

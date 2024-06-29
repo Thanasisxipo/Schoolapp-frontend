@@ -1,0 +1,24 @@
+@if (!courses) {
+    <div class="alert alert-danger text-center">No course found!</div>
+    <button mat-flat-button role="button" color="primary" (click)="addCourse(teacher)">Add Course </button>
+    <button mat-flat-button role="button" color="primary" (click)="goBack()">Back</button>
+  } @else {
+    <table class="table table-bordered">
+      <caption class="caption-top fw-bold bg-primary text-light text-center">
+         Courses 
+      </caption>
+      @for (course of courses; track course) {
+        <tr>
+          <td class="fw-semibold text-end">Id:</td>
+          <td class="ps-2">{{ course.id }}</td>
+          <td class="fw-semibold text-end">Course:</td>
+          <td class="ps-2">{{ course.courseName }}</td>
+          <td>
+            <button mat-flat-button role="button" color="primary" (click)="removeCourse(course)">Remove</button>
+          </td>
+        </tr>
+      }
+    </table>
+    <button mat-flat-button role="button" color="primary" (click)="addCourse(teacher)">Add Course</button>
+    <button mat-flat-button role="button" color="primary" (click)="goBack()">Back</button>
+  }
